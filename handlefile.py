@@ -4,7 +4,9 @@ def handle(msg, bot, reimport):
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
         #bot.sendMessage(msg["from"]["id"], "Command recognized, but not yet supported")
         if(msg["text"][0] == "/"):
-            if(msg["text"] == "/reload"):
+            if(msg["text"] == "/help"):
+                bot.sendMessage(msg["from"]["id"], "These are the commands, we actually have:\n /help to show this\n /reload to get the newest handling file\n /tutorial to learn hacking")
+            elif(msg["text"] == "/reload"):
                 return reimport(msg["from"]["id"])
             elif(msg["text"] == "/tutorial"):
                 bot.sendMessage(msg["from"]["id"], open("tutorial.txt").read())
