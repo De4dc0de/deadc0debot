@@ -44,8 +44,8 @@ def handle(msg, bot, reimport):
                         lastvote = banuser
                         bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
                 except:
-                    bandict[banuser] = bandict[banuser] + 1
-                    bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
+                    bandict[lastuser] = bandict[lastuser] + 1
+                    bot.sendMessage(id, "Voteban " + lastuser + " " + str(bandict[lastuser]) + "/" + str(banamount))
                 pickle.dump(bandict, open("bandict", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
