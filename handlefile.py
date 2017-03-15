@@ -1,4 +1,5 @@
 def handle(msg, bot, reimport):
+    botid = @Deadc0deBot
     #print("reloaded")
     #pprint(msg)
     id = msg["chat"]["id"]
@@ -14,13 +15,13 @@ def handle(msg, bot, reimport):
                 /tutorial to learn hacking
                 /source Show a Link to the source of the bot
                 /web Show a Link to the Web page""")
-            elif(command == "/reload"):
+            elif(command == "/reload" or command == "/reload" + botid):
                 return reimport(id)
-            elif(command == "/tutorial"):
+            elif(command == "/tutorial" or command == "/tutorial" + botid):
                 bot.sendMessage(id, open("tutorial.txt").read())
-            elif(command == "/source"):
+            elif(command == "/source" or command == "/source" + botid):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
-            elif(command == "/web"):
+            elif(command == "/web" or command == "/web" + botid):
                 bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
