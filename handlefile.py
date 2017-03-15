@@ -37,9 +37,12 @@ def handle(msg, bot, reimport):
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
                 try:
                     banuser = realcommand.split(" ")[1]
-                    print()
+                    try:
+                        bot.getChatMember(id, banuser)
+                    except:
+                        return
                     if(banuser != 0):
-                        print(bot.getChat(id))
+                        #print(bot.getChat(id))
                         if(not banuser in bandict):
                             bandict[banuser] = 1
                         else:
