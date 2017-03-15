@@ -1,5 +1,6 @@
 def handle(msg, bot, reimport):
     import pickle
+    import telepot
     botid = "@Deadc0deBot"
     botid = botid.lower()
     banamount = 10
@@ -36,7 +37,9 @@ def handle(msg, bot, reimport):
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
                 try:
                     banuser = realcommand.split(" ")[1]
+                    print()
                     if(banuser != 0):
+                        print(bot.getChat(id))
                         if(not banuser in bandict):
                             bandict[banuser] = 1
                         else:
@@ -44,11 +47,11 @@ def handle(msg, bot, reimport):
                         bandict["lastuser"] = banuser
                         bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
                 except:
-                    print(bandict["lastuser"])
+                    #print(bandict["lastuser"])
                     bandict[bandict["lastuser"]] = bandict[bandict["lastuser"]] + 1
-                    print("debug2")
+                    #print("debug2")
                     bot.sendMessage(id, "Voteban " + bandict["lastuser"] + " " + str(bandict[bandict["lastuser"]]) + "/" + str(banamount))
-                    print("debug3")
+                    #print("debug3")
                 pickle.dump(bandict, open("bandict", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
