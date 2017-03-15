@@ -11,13 +11,17 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, """These are the commands, we actually have:
                 /help to show this
                 /reload to get the newest handling file
-                /tutorial to learn hacking""")
+                /tutorial to learn hacking
+                /source Show a Link to the source of the bot
+                /web Show a Link to the Web page""")
             elif(command == "/reload"):
                 return reimport(id)
             elif(command == "/tutorial"):
                 bot.sendMessage(id, open("tutorial.txt").read())
             elif(command == "/source"):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
+            elif(command == "/web"):
+                bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
