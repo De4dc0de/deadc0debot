@@ -33,7 +33,7 @@ def handle(msg, bot, reimport):
                 try:
                     bandict = pickle.load(open("bandict"))
                 except:
-                    bandict = {"lastuser" : "nobody"}
+                    bandict = {"lastuser" : "nobody", "nobody" : 0}
                 try:
                     banuser = realcommand.split(" ")[1]
                     if(banuser != 0):
@@ -45,7 +45,7 @@ def handle(msg, bot, reimport):
                         bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
                 except:
                     print(bandict["lastuser"])
-                    bandict[(bandict["lastuser"])] = bandict[(bandict["lastuser"])] + 1
+                    bandict[bandict["lastuser"]] = bandict[bandict["lastuser"]] + 1
                     print("debug2")
                     bot.sendMessage(id, "Voteban " + bandict["lastuser"] + " " + str(bandict[bandict["lastuser"]]) + "/" + str(banamount))
                     print("debug3")
