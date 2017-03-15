@@ -28,7 +28,7 @@ def handle(msg):
     except:
         os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
         reload(handlefile)
-        bot.sendMessage(msg["from"]["id"], "Launch failed. Loaded Backup. Kick the Bot at the next Failure")
+        bot.sendMessage(msg["chat"]["id"], "Launch failed. Loaded Backup. Kick the Bot at the next Failure")
 
 bot.message_loop(handle)
 
