@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import os
+import random, string
 import configfile
 import telepot
 import handlefile
@@ -8,10 +9,12 @@ from pprint import pprint
 
 bot = telepot.Bot(configfile.id)
 
+def randomword(length):
+    return ''.join(random.choice(string.lowercase) for i in range(length))
 def reimport(id):
     try:
         os.system("mv handlefile.py handlefile.py.bak; rm handlefile.pyc")
-        os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py --output handlefile.py")
+        os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py?random=" + randomword(10) + " --output handlefile.py")
         reload(handlefile)
         print("reloaded")
         bot.sendMessage(id, "done")
