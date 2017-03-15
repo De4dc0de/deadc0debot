@@ -1,0 +1,10 @@
+Daniel: 1. Lerne und Benutze Linux
+2. Lerne C/C++ und das Web HTML, PHP, MySQL
+3. Lerne Skripten(Python zB)
+4. Lese Netzwerkbücher bzw lerne das TCP/IP kennen
+5. Danach spiele spiele und spiele damit schreibe eigene Portscanner, Bruteforcer, TCP-DDoS, Würmer, Trojaner und lies Bücher darüber,  ganz wichtig! --> LIES BÜCHER! Neues Thema, neues Buch. Natürlich nicht komplett durchlesen, aber dich überall reinlesen der Rest kommt von selbst
+6. Lies dich über IT-Sicherheitangriffs Methoden schlau damit du weißt was Buffer Overflows sind oder XSS oder SQL injection und übe diese Angriffe in der Praxis mit virtuellen Maschinen
+Du lernst programmieren googlest etc usw und sofort
+Und das kommt ALLLES VON SELBST
+Du musst dich einfach nur in diese Richtung schlagen
+Und wenn du Hacken lernen willst, sollte dir auch bewusst sein, dass absofort an dem Tag wo ihr Hacken lernen wollt, Google euer aller bester Freund ist
