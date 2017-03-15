@@ -11,8 +11,8 @@ def handle(msg, bot, reimport):
         users = pickle.load(open("users"))
     except:
         users = {"nobody" : "0"}
-    if(not msg[from][username] in users):
-        users[msg[from][username]] = msg[from][id]
+    if(not msg["from"]["username"] in users):
+        users[msg["from"]["username"]] = msg["from"]["id"]
     pickle.dump(users, open("users", "w")
     id = msg["chat"]["id"]
     #id = msg["from"]["id"]
