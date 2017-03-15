@@ -5,7 +5,7 @@ def handle(msg, bot, reimport):
     botid = botid.lower()
     banamount = 10
     #print("reloaded")
-    #pprint(msg)
+    print(msg)
     id = msg["chat"]["id"]
     #id = msg["from"]["id"]
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
@@ -65,6 +65,6 @@ def handle(msg, bot, reimport):
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
             
         else:
-            print(msg)
+            
             if("xD" in msg["text"]):
                 bot.sendMessage(id, ":funny:")
