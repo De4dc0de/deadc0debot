@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 import configfile
 import telepot
 import handlefile
@@ -8,6 +9,7 @@ from pprint import pprint
 bot = telepot.Bot(configfile.id)
 
 def reimport(id):
+    os.system("wget https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py -O handlefile.py")
     reload(handlefile)
     print("reloaded")
     bot.sendMessage(id, "done")
