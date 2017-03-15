@@ -28,6 +28,10 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, open("tutorial.txt").read())
             elif(command == "/source" or command == "/source" + botid):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
+            elif(command == "/penis" or command == "/penis" + botid):
+                bot.sendMessage(id, "<====3")
+            elif(command == "/love" or command == "/penis" + botid or command == "/<3"):
+                bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
                 bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
             elif(command == "/voteban" or command == "/voteban" + botid):
