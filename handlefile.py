@@ -5,7 +5,15 @@ def handle(msg, bot, reimport):
     botid = botid.lower()
     banamount = 10
     #print("reloaded")
-    print(msg)
+    #print(msg)
+    
+    try:
+        users = pickle.load(open("users"))
+    except:
+        users = {"nobody" : "0"}
+    if(not msg[from][username] in users):
+        users[msg[from][username]] = msg[from][id]
+    pickle.dump(users, open("users", "w")
     id = msg["chat"]["id"]
     #id = msg["from"]["id"]
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
@@ -40,12 +48,8 @@ def handle(msg, bot, reimport):
                 except:
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
                 try:
-                    banuser = realcommand.split(" ")[1]
-                    try:
-                        bot.getChatMember(id, banuser)
-                    except:
-                        return
-                    if(banuser != 0):
+                    banuser = realcommand.split(" ")[1].split("@")[1]
+                    if(banuser in users):
                         #print(bot.getChat(id))
                         if(not banuser in bandict):
                             bandict[banuser] = 1
@@ -59,6 +63,8 @@ def handle(msg, bot, reimport):
                     #print("debug2")
                     bot.sendMessage(id, "Voteban " + bandict["lastuser"] + " " + str(bandict[bandict["lastuser"]]) + "/" + str(banamount))
                     #print("debug3")
+                if(bandict[bandict["lastuser"]] >= banamount):
+                    kickChatMember(id, user[banuser])
                 pickle.dump(bandict, open("bandict", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
