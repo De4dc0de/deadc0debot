@@ -5,7 +5,10 @@ def handle(msg, bot, reimport):
         #bot.sendMessage(msg["from"]["id"], "Command recognized, but not yet supported")
         if(msg["text"][0] == "/"):
             if(msg["text"] == "/help"):
-                bot.sendMessage(msg["from"]["id"], "These are the commands, we actually have:\n /help to show this\n /reload to get the newest handling file\n /tutorial to learn hacking")
+                bot.sendMessage(msg["from"]["id"], """These are the commands, we actually have:
+                /help to show this
+                /reload to get the newest handling file
+                /tutorial to learn hacking """)
             elif(msg["text"] == "/reload"):
                 return reimport(msg["from"]["id"])
             elif(msg["text"] == "/tutorial"):
