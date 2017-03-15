@@ -16,7 +16,7 @@ def handle(msg, bot, reimport):
             else:
                 bot.sendMessage(msg["from"]["id"], "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(msg["from"]["id"], raw_input(msg["text"] + ": "))
-            #Ein Test, einfach zum Test...
+            
     else:
         pass
         #Hier koennte man die Erkennung dummer Fragen einfuegen.
