@@ -11,7 +11,9 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, """These are the commands, we actually have:
                 /help to show this
                 /reload to get the newest handling file
-                /tutorial to learn hacking """)
+                /tutorial to learn hacking 
+                
+                Source: https://github.com/De4dc0de/deadc0debot""")
             elif(command == "/reload"):
                 return reimport(id)
             elif(command == "/tutorial"):
