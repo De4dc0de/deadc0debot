@@ -13,4 +13,4 @@ def handle(msg, bot, reimport):
         #print(msg["text"])
     else:
         pass
-        #Hier könnte man die Erkennung dummer Fragen einfügen
+        #Hier koennte man die Erkennung dummer Fragen einfuegen
