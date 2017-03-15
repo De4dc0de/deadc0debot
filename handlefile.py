@@ -64,6 +64,7 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
             
-    else:
-        if("xD" in msg["text"]):
-            bot.sendMessage(id, ":funny:")
+        else:
+            print(msg)
+            if("xD" in msg["text"]):
+                bot.sendMessage(id, ":funny:")
