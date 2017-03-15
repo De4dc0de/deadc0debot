@@ -10,7 +10,7 @@ bot = telepot.Bot(configfile.id)
 
 def reimport(id):
     try:
-        os.popen("wget https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py -O handlefile.py")
+        os.popen("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py --output handlefile.py")
         reload(handlefile)
         print("reloaded")
         bot.sendMessage(id, "done")
