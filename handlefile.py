@@ -44,8 +44,8 @@ def handle(msg, bot, reimport):
                         bandict["lastuser"] = banuser
                         bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
                 except:
-                    print(bandict)
-                    bandict[bandict["lastuser"]] = bandict[bandict["lastuser"]] + 1
+                    print(bandict["lastuser"])
+                    bandict[(bandict["lastuser"])] = bandict[(bandict["lastuser"])] + 1
                     print("debug2")
                     bot.sendMessage(id, "Voteban " + bandict["lastuser"] + " " + str(bandict[bandict["lastuser"]]) + "/" + str(banamount))
                     print("debug3")
