@@ -7,6 +7,7 @@ def handle(msg, bot, reimport):
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
         #bot.sendMessage(id, "Command recognized, but not yet supported")
         command = msg["text"].lower()
+        print(command)
         if(command[0] == "/"):
             if(command == "/help"):
                 bot.sendMessage(id, """These are the commands, we actually have:
