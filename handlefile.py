@@ -30,7 +30,7 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
             elif(command == "/penis" or command == "/penis" + botid):
                 bot.sendMessage(id, "<====3")
-            elif(command == "/love" or command == "/penis" + botid or command == "/<3"):
+            elif(command == "/love" or command == "/love" + botid):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
                 bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
@@ -65,5 +65,5 @@ def handle(msg, bot, reimport):
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
             
     else:
-        pass
-        #Hier koennte man die Erkennung dummer Fragen einfuegen.
+        if("xD" in msg["text"]):
+            bot.sendMessage(id, ":funny:")
