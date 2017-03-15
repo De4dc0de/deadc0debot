@@ -1,5 +1,6 @@
 def handle(msg, bot, reimport):
     botid = "@Deadc0deBot"
+    botid = botid.lower()
     #print("reloaded")
     #pprint(msg)
     id = msg["chat"]["id"]
