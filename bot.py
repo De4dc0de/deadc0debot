@@ -10,17 +10,22 @@ bot = telepot.Bot(configfile.id)
 
 def reimport(id):
     try:
-        os.popen("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py --output handlefile.py")
+        os.system("mv handlefile.py handlefile.py.bak; rm handlefile.pyc")
+        os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py --output handlefile.py")
         reload(handlefile)
         print("reloaded")
         bot.sendMessage(id, "done")
     except:
-        bot.sendMessage(id, "Update failed. Kick the Bot")
+        os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
+        reload(handlefile)
+        bot.sendMessage(id, "Update failed. Loaded Backup")
 def handle(msg):
     try:
         handlefile.handle(msg, bot, reimport)
     except:
-        bot.sendMessage(msg["from"]["id"], "Launch failed. Kick the Bot and don't write anything")
+        os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
+        reload(handlefile)
+        bot.sendMessage(msg["from"]["id"], "Launch failed. Loaded Backup. Kick the Bot at the next Failure")
 
 bot.message_loop(handle)
 
