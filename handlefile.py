@@ -48,7 +48,10 @@ def handle(msg, bot, reimport):
             elif(command == "/source" or command == "/source" + botid):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
             elif(command == "/penis" or command == "/penis" + botid):
-                bot.sendMessage(id, "<====3")
+                try:
+                    bot.sendMessage(id, "<" + "=" * int(realtext.split(" ")[1]) + "3")
+                except:
+                    bot.sendMessage(id, "<====3")
             elif(command == "/love" or command == "/love" + botid):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
@@ -59,7 +62,7 @@ def handle(msg, bot, reimport):
                 except:
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
                 try:
-                    banuser = realcommand.split(" ")[1].split("@")[1]
+                    banuser = realtext.split(" ")[1].split("@")[1]
                     if(banuser in users):
                         #print(bot.getChat(id))
                         if(not banuser in bandict):
@@ -76,7 +79,10 @@ def handle(msg, bot, reimport):
                     bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
                     #print("debug3")
                 if(bandict[banuser] >= banamount):
-                    kickChatMember(id, user[banuser])
+                    try:
+                        kickChatMember(id, user[banuser])
+                    except:
+                        bot.sendMessage(id, "Admin, verbanne @" + banuser + " aus diesem Chat! Dieser Bot ist kein Admin!")
                 json.dump(bandict, open("bandict.json", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
