@@ -32,17 +32,17 @@ def handle(msg, bot, reimport):
         command = msg["text"].lower().split(" ")[0]
         #print(command)
         if(command[0] == "/"):
-            if(command == "/help"):
+            if(command == "/help" or command == "/help" + botid):
                 bot.sendMessage(id, """These are the commands, we actually have:
                 /help - show this
                 /reload - get the newest handling file
-                /tutorial - learn hacking
+                /tutorial /needtutorial - learn hacking
                 /source - show a Link to the source of the bot
                 /web - show a Link to the Web page
                 /voteban @user - be evil and ban an evil user""")
             elif(command == "/reload" or command == "/reload" + botid):
                 return reimport(id)
-            elif(command == "/tutorial" or command == "/tutorial" + botid):
+            elif(command == "/tutorial" or command == "/tutorial" + botid or command == "/needtutorial" or command == "/needtutorial" + botid):
                 try:
                     bot.sendMessage(id, open("tutorial.txt").read())
                 except:
