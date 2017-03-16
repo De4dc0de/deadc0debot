@@ -26,12 +26,10 @@ def handle(msg, bot, reimport):
     except:
         print("fehler 3")
     #id = msg["from"]["id"]
-    if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
-        #bot.sendMessage(id, "Command recognized, but not yet supported")
-        realcommand = msg["text"]
-        command = msg["text"].lower().split(" ")[0]
-        #print(command)
-        if(command[0] == "/"):
+    realtext = msg["text"]
+    command = msg["text"].lower().split(" ")[0]
+    if("entities" in msg and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
+        if(True):
             if(command == "/help" or command == "/help" + botid):
                 bot.sendMessage(id, """These are the commands, we actually have:
                 /help - show this
@@ -83,7 +81,6 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
             
-        else:
-            
-            if("xD" in msg["text"]):
-                bot.sendMessage(id, ":funny:")
+    else:       
+        if("xD" in msg["text"]):
+            bot.sendMessage(id, "\U0001f606")
