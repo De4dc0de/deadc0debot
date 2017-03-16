@@ -10,6 +10,7 @@ except:
         os.system("nano configfile.py")
     except:
         os.system("vi configfile.py")
+    import configfile #And again
 
 if(updates): #Change this in config
     os.system("git pull") #Update everything to the newest Version.
