@@ -66,28 +66,32 @@ def handle(msg, bot, reimport):
                     bandict = json.load(open("bandict.json"))
                 except:
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
-                try:
-                    banuser = realtext.split(" ")[1].split("@")[1]
-                    if(banuser in users):
-                        #print(bot.getChat(id))
-                        if(not banuser in bandict):
-                            bandict[banuser] = 1
-                        else:
-                            bandict[banuser] = bandict[banuser] + 1
-                        bandict["lastuser"] = banuser
-                        bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
-                except:
-                    #print(bandict["lastuser"])
-                    banuser = bandict["lastuser"]
-                    bandict[banuser] = bandict[banuser] + 1
-                    #print("debug2")
-                    bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
-                    #print("debug3")
-                if(bandict[banuser] >= banamount):
+                if(True): #Hier Überprüfung der einfachen Abstimmung einfügen
                     try:
-                        kickChatMember(id, user[banuser])
+                        banuser = realtext.split(" ")[1].split("@")[1]
+                        if(banuser in users):
+                            #print(bot.getChat(id))
+                            if(not banuser in bandict):
+                                bandict[banuser] = 1
+                            else:
+                                bandict[banuser] = bandict[banuser] + 1
+                            bandict["lastuser"] = banuser
+                            bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
                     except:
-                        bot.sendMessage(id, "Admin, verbanne @" + banuser + " aus diesem Chat! Dieser Bot ist kein Admin!")
+                        #print(bandict["lastuser"])
+                        banuser = bandict["lastuser"]
+                        bandict[banuser] = bandict[banuser] + 1
+                        #print("debug2")
+                        bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
+                        #print("debug3")
+                    if(bandict[banuser] >= banamount):
+                        try:
+                            kickChatMember(id, user[banuser])
+                        except:
+                            bot.sendMessage(id, "Admin, verbanne @" + banuser + " aus diesem Chat! Dieser Bot ist kein Admin!")
+                            bandict[banuser] = 0
+                else:
+                    bot.sendMessage(id, "Hier würde dann einfach ne Stimme abgezogen werden und es sähe so aus, als hätte der abstimmende noch nicht abgestimmt. Ist aber noch nicht so.")
                 json.dump(bandict, open("bandict.json", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
