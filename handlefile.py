@@ -63,7 +63,7 @@ def handle(msg, bot, reimport):
             elif(command == "/web" or command == "/web" + botid):
                 bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
             elif(command == "/gidf" or command == "/gidf" + botid):
-                bot.sendMessage(id, "https://gidf.de")
+                bot.sendMessage(id, "http://gidf.de")
             elif(command == "/voteban" or command == "/voteban" + botid):
                 try:
                     bandict = json.load(open("bandict.json"))
