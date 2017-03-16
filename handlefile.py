@@ -42,6 +42,7 @@ def handle(msg, bot, reimport):
                 /tutorial /needtutorial - learn hacking
                 /source - show a Link to the source of the bot
                 /web - show a Link to the Web page
+                /gidf - You know what?
                 /voteban @user - be evil and ban an evil user""")
             elif(command == "/reload" or command == "/reload" + botid):
                 return reimport(id)
@@ -61,6 +62,8 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
                 bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
+            elif(command == "/gidf" or command == "/gidf" + botid):
+                bot.sendMessage(id, "https://gidf.de")
             elif(command == "/voteban" or command == "/voteban" + botid):
                 try:
                     bandict = json.load(open("bandict.json"))
@@ -91,7 +94,7 @@ def handle(msg, bot, reimport):
                             bot.sendMessage(id, "Admin, verbanne @" + banuser + " aus diesem Chat! Dieser Bot ist kein Admin!")
                             bandict[banuser] = 0
                 else:
-                    bot.sendMessage(id, "Hier würde dann einfach ne Stimme abgezogen werden und es sähe so aus, als hätte der abstimmende noch nicht abgestimmt. Ist aber noch nicht so.")
+                    bot.sendMessage(id, "Placeholda Contaent")
                 json.dump(bandict, open("bandict.json", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
