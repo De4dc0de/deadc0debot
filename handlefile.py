@@ -5,7 +5,7 @@ def handle(msg, bot, reimport):
     botid = botid.lower()
     banamount = 10
     #print("reloaded")
-    #print(msg)
+    print(msg)
     
     try:
         users = pickle.load(open("users"))
@@ -13,8 +13,8 @@ def handle(msg, bot, reimport):
         users = {"nobody" : "0"}
     if(not msg["from"]["username"] in users):
         users[msg["from"]["username"]] = msg["from"]["id"]
-    pickle.dump(users, open("users", "w")
-    id = msg["from"]["id"]
+    pickle.dump(users, open("users", "w"))
+    id = msg["chat"]["id"]
     #id = msg["from"]["id"]
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
         #bot.sendMessage(id, "Command recognized, but not yet supported")
