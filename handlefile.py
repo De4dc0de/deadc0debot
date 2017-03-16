@@ -83,4 +83,4 @@ def handle(msg, bot, reimport):
             
     else:       
         if("xD" in msg["text"]):
-            bot.sendMessage(id, "\U0001f606")
+            bot.sendMessage(id, u'\U0001f606')
