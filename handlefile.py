@@ -20,7 +20,7 @@ def handle(msg, bot, reimport):
         #bot.sendMessage(id, "Command recognized, but not yet supported")
         realcommand = msg["text"]
         command = msg["text"].lower().split(" ")[0]
-        print(command)
+        #print(command)
         if(command[0] == "/"):
             if(command == "/help"):
                 bot.sendMessage(id, """These are the commands, we actually have:
