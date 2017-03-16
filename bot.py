@@ -20,6 +20,11 @@ from pprint import pprint
 
 bot = telepot.Bot(configfile.id) #Need to define this here, because other functions need this
 
+try:
+    os.chdir(os.path.dirname(os.path.realpath(__file__))) #Change to this directory
+except:
+    print("Could not change directory")
+    
 def randomword(length): #Just returns a random string. Needed for uncached download
     return ''.join(random.choice(string.lowercase) for i in range(length))
 
