@@ -12,6 +12,11 @@ except:
         os.system("vi configfile.py")
     import configfile #And again
 
+try:
+    os.chdir(os.path.dirname(os.path.realpath(__file__))) #Change to this directory
+except:
+    print("Could not change directory")
+    
 if(configfile.updates): #Change this in config
     os.system("git pull") #Update everything to the newest Version.
 
@@ -19,11 +24,6 @@ import handlefile #File with all the defitinitions. Normally the only file to ch
 from pprint import pprint
 
 bot = telepot.Bot(configfile.id) #Need to define this here, because other functions need this
-
-try:
-    os.chdir(os.path.dirname(os.path.realpath(__file__))) #Change to this directory
-except:
-    print("Could not change directory")
     
 def randomword(length): #Just returns a random string. Needed for uncached download
     return ''.join(random.choice(string.lowercase) for i in range(length))
