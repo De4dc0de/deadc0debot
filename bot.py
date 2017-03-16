@@ -2,23 +2,34 @@
 
 import random, string, os, telepot #Usual imports
 
-os.system("git pull") #Update everything to the newest Version. Comment out to stop updates
+try:
+    import configfile #Just some config
+except:
+    os.system("cp configfile.py.sample configfile.py")
+    try:
+        os.system("nano configfile.py")
+    except:
+        os.system("vi configfile.py")
 
-import configfile #Just Bot id
-import handlefile #File with all the defitinitions. Normally the only file to change
+if(updates): #Change this in config
+    os.system("git pull") #Update everything to the newest Version.
+
+import handlefile #File with all the defitinitions. Normally the only file to change except the config file
 from pprint import pprint
 
-bot = telepot.Bot(configfile.id)
-updates = False
+bot = telepot.Bot(configfile.id) #Need to define this here, because other functions need this
 
-def randomword(length):
+def randomword(length): #Just returns a random string. Needed for uncached download
     return ''.join(random.choice(string.lowercase) for i in range(length))
-def reimport(id):
-    updates = True #Comment this line out to stop updates
+
+def reimport(id): #Reload the definitins file. Disable this in config.py
     if(updates):
         try:
             os.system("mv handlefile.py handlefile.py.bak; rm handlefile.pyc")
-            os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py?random=" + randomword(10) + " --output handlefile.py")
+            if(beta):
+                os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefileedit.py?random=" + randomword(10) + " --output handlefile.py")
+            else:
+                os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py?random=" + randomword(10) + " --output handlefile.py")
             reload(handlefile)
             print("reloaded")
             bot.sendMessage(id, "done")
@@ -26,7 +37,7 @@ def reimport(id):
             os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
             reload(handlefile)
             bot.sendMessage(id, "Update failed. Loaded Backup")
-def handle(msg):
+def handle(msg): #Wrapper for the outsourced and more advanced handle function
     try:
         handlefile.handle(msg, bot, reimport)
     except:
