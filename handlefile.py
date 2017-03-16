@@ -61,7 +61,7 @@ def handle(msg, bot, reimport):
             elif(command == "/love" or command == "/love" + botid):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
-                bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
+                bot.sendMessage(id, "https://deadc0de.bplaced.net")
             elif(command == "/gidf" or command == "/gidf" + botid):
                 bot.sendMessage(id, "http://gidf.de")
             elif(command == "/voteban" or command == "/voteban" + botid):
