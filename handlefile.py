@@ -1,5 +1,5 @@
 def handle(msg, bot, reimport):
-    import pickle
+    import json
     import telepot
     import time
     botid = "@Deadc0deBot"
@@ -7,10 +7,10 @@ def handle(msg, bot, reimport):
     banamount = 10
     #print("reloaded")
     print(msg)
-    pickle.dump(msg, open("dump" + str(time.clock()) + ".txt"))
+    #json.dump(msg, open("dump" + str(time.clock()) + ".txt", "w"))
     
     try:
-        users = pickle.load(open("users"))
+        users = json.load(open("users.json"))
     except:
         users = {"nobody" : "0"}
         print("fehler 1")
@@ -21,7 +21,7 @@ def handle(msg, bot, reimport):
     except:
         print("fehler 2")
     try:
-        pickle.dump(users, open("users", "w"))
+        json.dump(users, open("users.json", "w"))
         id = msg["chat"]["id"]
     except:
         print("fehler 3")
@@ -57,7 +57,7 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
             elif(command == "/voteban" or command == "/voteban" + botid):
                 try:
-                    bandict = pickle.load(open("bandict"))
+                    bandict = json.load(open("bandict.json"))
                 except:
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
                 try:
@@ -78,7 +78,7 @@ def handle(msg, bot, reimport):
                     #print("debug3")
                 if(bandict[bandict["lastuser"]] >= banamount):
                     kickChatMember(id, user[banuser])
-                pickle.dump(bandict, open("bandict", "w"))
+                json.dump(bandict, open("bandict.json", "w"))
             else:
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
