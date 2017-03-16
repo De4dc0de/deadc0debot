@@ -54,7 +54,7 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
             elif(command == "/penis" or command == "/penis" + botid):
                 try:
-                    bot.sendMessage(id, "<" + "=" * limit(int(realtext.split(" ")[1])) + "3")
+                    bot.sendMessage(id, "<" + "=" * limit(int(realtext.split(" ")[1]), 500) + "3")
                 except:
                     bot.sendMessage(id, "<====3")
             elif(command == "/love" or command == "/love" + botid):
