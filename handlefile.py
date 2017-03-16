@@ -11,13 +11,17 @@ def handle(msg, bot, reimport):
         users = pickle.load(open("users"))
     except:
         users = {"nobody" : "0"}
-    if(not msg["from"]["username"] in users):
-        users[msg["from"]["username"]] = msg["from"]["id"]
+        print("fehler 1")
+    try:
+        if(not msg["from"]["username"] in users):
+            users[msg["from"]["username"]] = msg["from"]["id"]
+    except:
+        print("fehler 2")
     try:
         pickle.dump(users, open("users", "w"))
         id = msg["chat"]["id"]
     except:
-        print("hier ist der Fehler")
+        print("fehler 3")
     #id = msg["from"]["id"]
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
         #bot.sendMessage(id, "Command recognized, but not yet supported")
@@ -36,7 +40,10 @@ def handle(msg, bot, reimport):
             elif(command == "/reload" or command == "/reload" + botid):
                 return reimport(id)
             elif(command == "/tutorial" or command == "/tutorial" + botid):
-                bot.sendMessage(id, open("tutorial.txt").read())
+                try:
+                    bot.sendMessage(id, open("tutorial.txt").read())
+                except:
+                    print("fehler 4")
             elif(command == "/source" or command == "/source" + botid):
                 bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
             elif(command == "/penis" or command == "/penis" + botid):
