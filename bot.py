@@ -12,7 +12,7 @@ except:
         os.system("vi configfile.py")
     import configfile #And again
 
-if(updates): #Change this in config
+if(configfile.updates): #Change this in config
     os.system("git pull") #Update everything to the newest Version.
 
 import handlefile #File with all the defitinitions. Normally the only file to change except the config file
@@ -24,10 +24,10 @@ def randomword(length): #Just returns a random string. Needed for uncached downl
     return ''.join(random.choice(string.lowercase) for i in range(length))
 
 def reimport(id): #Reload the definitins file. Disable this in config.py
-    if(updates):
+    if(configfile.updates):
         try:
             os.system("mv handlefile.py handlefile.py.bak; rm handlefile.pyc")
-            if(beta):
+            if(configfile.beta):
                 os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefileedit.py?random=" + randomword(10) + " --output handlefile.py")
             else:
                 os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py?random=" + randomword(10) + " --output handlefile.py")
