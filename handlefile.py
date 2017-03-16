@@ -14,7 +14,7 @@ def handle(msg, bot, reimport):
     if(not msg["from"]["username"] in users):
         users[msg["from"]["username"]] = msg["from"]["id"]
     pickle.dump(users, open("users", "w")
-    id = msg["chat"]["id"]
+    id = msg["from"]["id"]
     #id = msg["from"]["id"]
     if("entities" in msg and msg["entities"][0]["type"] == "bot_command"):
         #bot.sendMessage(id, "Command recognized, but not yet supported")
