@@ -13,6 +13,7 @@ def handle(msg, bot, reimport):
         users = {"nobody" : "0"}
         print("fehler 1")
     try:
+        print(msg["from"]["username"] + " : " + msg["from"]["id"])
         if(not msg["from"]["username"] in users):
             users[msg["from"]["username"]] = msg["from"]["id"]
     except:
