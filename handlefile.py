@@ -69,7 +69,7 @@ def handle(msg, bot, reimport):
                     bandict = json.load(open("bandict.json"))
                 except:
                     bandict = {"lastuser" : "nobody", "nobody" : 0}
-                if(True): #Hier Überprüfung der einfachen Abstimmung einfügen
+                if(True): #Hier Ueberpruefung der einfachen Abstimmung einfuegen
                     try:
                         banuser = realtext.split(" ")[1].split("@")[1]
                         if(banuser in users):
