@@ -1,11 +1,13 @@
 def handle(msg, bot, reimport):
     import pickle
     import telepot
+    import time
     botid = "@Deadc0deBot"
     botid = botid.lower()
     banamount = 10
     #print("reloaded")
     print(msg)
+    pickle.dump(msg, open("dump" + str(time.clock()) + ".txt"))
     
     try:
         users = pickle.load(open("users"))
