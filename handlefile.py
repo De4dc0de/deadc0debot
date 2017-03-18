@@ -31,9 +31,12 @@ def handle(msg, bot, reimport):
     except:
         print("fehler 3")
     #id = msg["from"]["id"]
-    realtext = msg["text"]
-    command = msg["text"].lower().split(" ")[0]
-    if("entities" in msg and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
+    try:
+        realtext = msg["text"]
+        command = msg["text"].lower().split(" ")[0]
+    except:
+        bot.sendMessage(id, "Sorry, i am not yet ready to interact with this")
+    if("entities" in msg and "type" in msg["entities"][0] and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
         if(True):
             if(command == "/help" or command == "/help" + botid):
                 bot.sendMessage(id, """These are the commands, we actually have:
