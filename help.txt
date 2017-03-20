@@ -1,0 +1,9 @@
+These are the commands, we actually have:
+
+/help - show this
+/reload - get the newest handling file
+/tutorial /needtutorial - learn hacking
+/source - show a Link to the source of the bot
+/web - show a Link to the Web page
+/gidf - You know what?
+/voteban @user - be evil and ban an evil user
