@@ -35,9 +35,12 @@ def handle(msg, bot, reimport):
     except:
         print("fehler 3")
     #id = msg["from"]["id"]
-    realtext = msg["text"]
-    command = msg["text"].lower().split(" ")[0]
-    if("entities" in msg and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
+    try:
+        realtext = msg["text"]
+        command = msg["text"].lower().split(" ")[0]
+    except:
+        bot.sendMessage(id, "Sorry, i am not yet ready to interact with this")
+    if("entities" in msg and "type" in msg["entities"][0] and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
         if(True):
             if(command == "/help" or command == "/help" + botid):
                 bot.sendMessage(id, """These are the commands, we actually have:
@@ -65,7 +68,7 @@ def handle(msg, bot, reimport):
             elif(command == "/love" or command == "/love" + botid):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
-                bot.sendMessage(id, "https://http://deadc0de.bplaced.net")
+                bot.sendMessage(id, "http://deadc0de.bplaced.net")
             elif(command == "/gidf" or command == "/gidf" + botid):
                 bot.sendMessage(id, "http://gidf.de")
             elif(command == "/voteban" or command == "/voteban" + botid):
@@ -104,6 +107,9 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
             
-    else:       
-        if("xD" in msg["text"]):
-            bot.sendMessage(id, u'\U0001f606')
+    else:
+        try:
+            if("xD" in msg["text"] or "XD" in msg["text"] or "xd" in msg["text"] or "Xd" in msg["text"]):
+                bot.sendMessage(id, u'\U0001f606')
+        except:
+            pass
