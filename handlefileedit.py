@@ -2,7 +2,11 @@ def handle(msg, bot, reimport):
     import json
     import telepot
     import time
-    botid = "@Deadc0deBot"
+    import configfile
+    try:
+        botid = configfile.botid
+    except:
+        botid = "@Deadc0deBot"
     botid = botid.lower()
     banamount = 10
     #print("reloaded")
