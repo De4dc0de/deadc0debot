@@ -1,4 +1,10 @@
-id = '999999999:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-updates = False
-beta = False
-botid = "@Deadc0deBot"
+id = '999999999:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' #Important! Get this from Botfather
+updates = False #False is more safe, as the update mechanism pulls directly from github
+beta = False #GODDAMMIT, has to stay false!
+botid = "@Deadc0deBot" #Change this or help will never work
+
+#Files. Just Comment to disable function
+
+helpfile = "help.txt"
+jokefile = "jokes.txt"
+tutfile = "tutorial.txt"
