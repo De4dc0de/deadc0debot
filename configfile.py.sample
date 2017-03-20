@@ -3,8 +3,11 @@ updates = False #False is more safe, as the update mechanism pulls directly from
 beta = False #GODDAMMIT, has to stay false!
 botid = "@Deadc0deBot" #Change this or help will never work
 
-#Files. Just Comment to disable function
+#Files and URLs. Just Comment to disable function
 
 helpfile = "help.txt"
 jokefile = "jokes.txt"
 tutfile = "tutorial.txt"
+sourceurl = "https://github.com/De4dc0de/deadc0debot"
+weburl = "http://deadc0de.bplaced.net"
+gidfurl = "http://gidf.de"
