@@ -43,23 +43,22 @@ def handle(msg, bot, reimport):
     if("entities" in msg and "type" in msg["entities"][0] and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
         if(True):
             if(command == "/help" or command == "/help" + botid):
-                bot.sendMessage(id, """These are the commands, we actually have:
-                /help - show this
-                /reload - get the newest handling file
-                /tutorial /needtutorial - learn hacking
-                /source - show a Link to the source of the bot
-                /web - show a Link to the Web page
-                /gidf - You know what?
-                /voteban @user - be evil and ban an evil user""")
+                try:
+                    bot.sendMessage(id, open(configfile.helpfile).read())
+                except:
+                    pass
             elif(command == "/reload" or command == "/reload" + botid):
                 return reimport(id)
             elif(command == "/tutorial" or command == "/tutorial" + botid or command == "/needtutorial" or command == "/needtutorial" + botid):
                 try:
-                    bot.sendMessage(id, open("tutorial.txt").read())
+                    bot.sendMessage(id, open(configfile.tutfile).read())
                 except:
-                    print("fehler 4")
+                    pass
             elif(command == "/source" or command == "/source" + botid):
-                bot.sendMessage(id, "https://github.com/De4dc0de/deadc0debot")
+                try:
+                    bot.sendMessage(id, configfile.sourceurl)
+                except:
+                    pass
             elif(command == "/penis" or command == "/penis" + botid):
                 try:
                     bot.sendMessage(id, "<" + "=" * limit(int(realtext.split(" ")[1]), 500) + "3")
@@ -68,9 +67,15 @@ def handle(msg, bot, reimport):
             elif(command == "/love" or command == "/love" + botid):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
-                bot.sendMessage(id, "http://deadc0de.bplaced.net")
+                try:
+                    bot.sendMessage(id, configfile.weburl)
+                except:
+                    pass
             elif(command == "/gidf" or command == "/gidf" + botid):
-                bot.sendMessage(id, "http://gidf.de")
+                try:
+                    bot.sendMessage(id, configfile.gidfurl)
+                except:
+                    pass
             elif(command == "/voteban" or command == "/voteban" + botid):
                 try:
                     bandict = json.load(open("bandict.json"))
