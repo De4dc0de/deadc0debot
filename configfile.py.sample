@@ -7,6 +7,7 @@ botid = "@Deadc0deBot" #Change this or help will never work
 
 helpfile = "help.txt"
 jokefile = "jokes.txt"
+zitatfile = "zitate.txt"
 tutfile = "tutorial.txt"
 sourceurl = "https://github.com/De4dc0de/deadc0debot"
 weburl = "http://deadc0de.bplaced.net"
