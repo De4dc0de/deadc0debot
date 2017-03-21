@@ -3,6 +3,7 @@ def handle(msg, bot, reimport):
     import telepot
     import time
     import configfile
+    import random
     try:
         botid = configfile.botid
     except:
@@ -52,6 +53,11 @@ def handle(msg, bot, reimport):
             elif(command == "/tutorial" or command == "/tutorial" + botid or command == "/needtutorial" or command == "/needtutorial" + botid):
                 try:
                     bot.sendMessage(id, open(configfile.tutfile).read())
+                except:
+                    pass
+            elif(command == "/zitat" or command == "/zitat" + botid):
+                try:
+                    bot.sendMessage(id, random.choice(open(configfile.zitatfile).readlines()))
                 except:
                     pass
             elif(command == "/source" or command == "/source" + botid):
@@ -117,4 +123,4 @@ def handle(msg, bot, reimport):
             if("xD" in msg["text"] or "XD" in msg["text"] or "xd" in msg["text"] or "Xd" in msg["text"]):
                 bot.sendMessage(id, u'\U0001f606')
         except:
-            pass
+pass
