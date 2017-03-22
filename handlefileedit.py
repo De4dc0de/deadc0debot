@@ -123,6 +123,6 @@ def handle(msg, bot, reimport):
             if("xD" in msg["text"] or "XD" in msg["text"] or "xd" in msg["text"] or "Xd" in msg["text"]):
                 bot.sendMessage(id, u'\U0001f606')
             elif("nein" in msg["text"] or "Nein" in msg["text"]):
-                bot.sendMessage(id, u'\U0001f606')
+                bot.sendMessage(id, "Doch")
         except:
             pass
