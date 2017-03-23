@@ -77,7 +77,7 @@ def handle(msg, bot, reimport):
             elif(command == "/vegans" or command == "/vegans" + botid):
                 bot.sendMessage(id, "VEGANER SIND FUCKING GAY! NIGERIANISCHER PRINZ.")
             elif(command == "/veganer" or command == "/veganer" + botid):
-                bot.sendMessage(id, "Jedes Stueck Fleisch war mal ein Tier!. NA UND ?")
+                bot.sendMessage(id, "Jedes Stueck Fleisch war mal ein Tier!")
             elif(command == "/web" or command == "/web" + botid):
                 try:
                     bot.sendMessage(id, configfile.weburl)
