@@ -60,6 +60,11 @@ def handle(msg, bot, reimport):
                     bot.sendMessage(id, random.choice(open(configfile.zitatfile).readlines()))
                 except:
                     pass
+            elif(command == "/brucelee" or command == "/brucelee" + botid):
+                try:
+                    bot.sendMessage(id, random.choice(open(configfile.brucefile).readlines()))
+                except:
+                    pass
             elif(command == "/source" or command == "/source" + botid):
                 try:
                     bot.sendMessage(id, configfile.sourceurl)
