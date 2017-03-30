@@ -39,7 +39,7 @@ def handle(msg, bot, reimport):
         realtext = msg["text"]
         command = msg["text"].lower().split(" ")[0]
     except:
-        bot.sendMessage(id, "Sorry, i am not yet ready to interact with this")
+        pass #bot.sendMessage(id, "Sorry, i am not yet ready to interact with this")
     if("entities" in msg and "type" in msg["entities"][0] and msg["entities"][0]["type"] == "bot_command" and command[0] == "/"):
         if(True):
             if(command == "/help" or command == "/help" + botid):
