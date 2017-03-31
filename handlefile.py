@@ -3,6 +3,7 @@ def handle(msg, bot, reimport):
     import telepot
     import time
     import configfile
+    import binascii
     try:
         botid = configfile.botid
     except:
@@ -17,10 +18,7 @@ def handle(msg, bot, reimport):
             return daslimit
         else:
             return derwert
-    
-    def decode_binary_string(s):
-        return ''.join(chr(int(s[i*8:i*8+8],2)) for i in range(len(s)//8))
-    
+        
     try:
         users = json.load(open("users.json"))
     except:
@@ -122,7 +120,7 @@ def handle(msg, bot, reimport):
             if(msg["text"].replace(" ", "").replace("0", "").replace("1", "").replace("\n", "") == ""):
                 if(len(msg["text"]) > 7 and "0" in msg["text"] or "1" in msg["text"]):
                     bot.sendMessage(id, "Das ist dein Text:")
-                    binaer = msg["text"].replace(" ", "").replace("\n", "")
-                    bot.sendMessage(id, decode_binary_string(binaer))
+                    binaer = int("0b" + msg["text"].replace(" ", "").replace("\n", ""), 2)
+                    bot.sendMessage(id, binascii.unhexlify('%x' % binaer))
         except:
             pass
