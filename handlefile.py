@@ -121,6 +121,7 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, u'\U0001f606')
             if(msg["text"].replace(" ", "").replace("0", "").replace("1", "").replace("\n", "") == ""):
                 if(len(msg["text"]) > 7 and "0" in msg["text"] or "1" in msg["text"]):
+                    bot.sendMessage(id, "Das ist dein Text:")
                     binaer = msg["text"].replace(" ", "").replace("\n", "")
                     bot.sendMessage(id, decode_binary_string(binaer))
         except:
