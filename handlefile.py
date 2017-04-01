@@ -110,7 +110,7 @@ def handle(msg, bot, reimport):
                     bot.sendMessage(id, "Placeholda Contaent")
                 json.dump(bandict, open("bandict.json", "w"))
             else:
-                bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
+                pass#bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
             
     else:
@@ -119,8 +119,8 @@ def handle(msg, bot, reimport):
                 bot.sendMessage(id, u'\U0001f606')
             if(msg["text"].replace(" ", "").replace("0", "").replace("1", "").replace("\n", "") == ""):
                 if(len(msg["text"]) > 7 and "0" in msg["text"] or "1" in msg["text"]):
-                    bot.sendMessage(id, "Das ist dein Text:")
                     binaer = int("0b" + msg["text"].replace(" ", "").replace("\n", ""), 2)
+                    bot.sendMessage(id, "Das ist dein Text:")
                     bot.sendMessage(id, binascii.unhexlify('%x' % binaer))
         except:
             pass
