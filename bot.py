@@ -45,14 +45,22 @@ def reimport(id): #Reload the definitins file. Disable this in config.py
             bot.sendMessage(id, "done")
         except:
             os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
-            reload(handlefile)
+            try:
+                reload(handlefile)
+            except:
+                import imp
+                imp.reload(handlefile)
             bot.sendMessage(id, "Update failed. Loaded Backup")
 def handle(msg): #Wrapper for the outsourced and more advanced handle function
     try:
         handlefile.handle(msg, bot, reimport)
     except:
         os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
-        reload(handlefile)
+        try:
+            reload(handlefile)
+        except:
+            import imp
+            imp.reload(handlefile)
         bot.sendMessage(msg["chat"]["id"], "Launch failed. Loaded Backup. Kick the Bot at the next Failure")
 
 bot.message_loop(handle)
