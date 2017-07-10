@@ -80,7 +80,7 @@ def handle(msg, bot, reimport):
                     pass
             elif(command == "/vote" or command == "/vote" + botid):
                 try:
-                    votedict = json.load(open("votes.txt"))
+                    votedict = json.load(open("votes.json"))
                 except:
                     votedict = {"lastvote": "nothing", "nothing": {"limit": datetime.date.today(), "votestring": "Nothing", "pro": [], "contra": []}}
                 cparts = realtext.split(" ")
@@ -89,6 +89,8 @@ def handle(msg, bot, reimport):
                         if(not zlib.crc32(cparts[1]) in votedict and int(cparts[2]) > 0):
                             votedict[zlib.crc32(cparts[1])] = {"limit": datetime.date.today() + datetime.timedelta(int(cparts[2])), "votestring": cparts[1], "pro": [msg["from"]["id"]], "contra": []}
                             votedict["lastvote"] = zlib.crc32(cparts[1])
+                            print(msg["from"]["id"] + " voted for " + cparts[1])
+                    json.dump(votedict, open("votes.json", "w"))
                 except:
                     pass
             else:
