@@ -4,6 +4,8 @@ def handle(msg, bot, reimport):
     import time
     import configfile
     import binascii
+    import datetime
+    import zlib
     try:
         botid = configfile.botid
     except:
@@ -77,38 +79,19 @@ def handle(msg, bot, reimport):
                     bot.sendMessage(id, configfile.gidfurl)
                 except:
                     pass
-            elif(command == "/voteban" or command == "/voteban" + botid):
+            elif(command == "/vote" or command == "/vote" + botid):
                 try:
-                    bandict = json.load(open("bandict.json"))
+                    votedict = json.load(open("votes.txt"))
                 except:
-                    bandict = {"lastuser" : "nobody", "nobody" : 0}
-                if(True): #Hier Ueberpruefung der einfachen Abstimmung einfuegen
-                    try:
-                        banuser = realtext.split(" ")[1].split("@")[1]
-                        if(banuser in users):
-                            #print(bot.getChat(id))
-                            if(not banuser in bandict):
-                                bandict[banuser] = 1
-                            else:
-                                bandict[banuser] = bandict[banuser] + 1
-                            bandict["lastuser"] = banuser
-                            bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
-                    except:
-                        #print(bandict["lastuser"])
-                        banuser = bandict["lastuser"]
-                        bandict[banuser] = bandict[banuser] + 1
-                        #print("debug2")
-                        bot.sendMessage(id, "Voteban " + banuser + " " + str(bandict[banuser]) + "/" + str(banamount))
-                        #print("debug3")
-                    if(bandict[banuser] >= banamount):
-                        try:
-                            kickChatMember(id, user[banuser])
-                        except:
-                            bot.sendMessage(id, "Admin, verbanne @" + banuser + " aus diesem Chat! Dieser Bot ist kein Admin!")
-                            bandict[banuser] = 0
-                else:
-                    bot.sendMessage(id, "Placeholda Contaent")
-                json.dump(bandict, open("bandict.json", "w"))
+                    votedict = {"lastvote": "nothing", "nothing": {"limit": datetime.date.today(), "votestring": "Nothing", "pro": [], "contra": []}}
+                cparts = realtext.split(" ")
+                try:
+                    if(len(cparts) > 2):
+                        if(not zlib.crc32(cparts[1]) in votedict and int(cparts[2]) > 0):
+                            votedict[zlib.crc32(cparts[1])] = {"limit": datetime.date.today() + datetime.timedelta(int(cparts[2])), "votestring": cparts[1], "pro": [msg["from"]["id"]], "contra": []}
+                            votedict["lastvote"] = zlib.crc32(cparts[1])
+                except:
+                    pass
             else:
                 pass#bot.sendMessage(id, "Sorry, no recognizeable command. Use /help instead")
                 #bot.sendMessage(id, raw_input(msg["text"] + ": "))
