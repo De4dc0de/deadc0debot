@@ -36,7 +36,11 @@ def reimport(id): #Reload the definitins file. Disable this in config.py
                 os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefileedit.py?random=" + randomword(10) + " --output handlefile.py")
             else:
                 os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefile.py?random=" + randomword(10) + " --output handlefile.py")
-            reload(handlefile)
+            try:
+                reload(handlefile)
+            except:
+                import imp
+                imp.reload(handlefile)
             print("reloaded")
             bot.sendMessage(id, "done")
         except:
