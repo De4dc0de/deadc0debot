@@ -19,24 +19,6 @@ def handle(msg, bot, reimport):
             return daslimit
         else:
             return derwert
-        
-    try:
-        users = json.load(open("users.json"))
-    except:
-        users = {"nobody" : "0"}
-        print("fehler 1")
-    try:
-        print(msg["from"]["username"] + " : " + str(msg["from"]["id"]))
-        if(not msg["from"]["username"] in users):
-            users[msg["from"]["username"]] = msg["from"]["id"]
-    except:
-        print("fehler 2 (Er hat keinen Nutzernamen)")
-    try:
-        json.dump(users, open("users.json", "w"))
-        id = msg["chat"]["id"]
-    except:
-        print("fehler 3")
-    #id = msg["from"]["id"]
     try:
         realtext = msg["text"]
         command = msg["text"].lower().split(" ")[0]
