@@ -31,7 +31,10 @@ def randomword(length): #Just returns a random string. Needed for uncached downl
 def reimport(id): #Reload the definitins file. Disable this in config.py
     if(configfile.updates):
         try:
-            os.system("mv handlefile.py handlefile.py.bak; rm handlefile.pyc")
+            try:
+                os.system("mv handlefile.py handlefile.py.bak; rm handlefile.pyc")
+            except:
+                pass
             if(configfile.beta):
                 os.system("curl https://raw.githubusercontent.com/De4dc0de/deadc0debot/master/handlefileedit.py?random=" + randomword(10) + " --output handlefile.py")
             else:
@@ -44,7 +47,10 @@ def reimport(id): #Reload the definitins file. Disable this in config.py
             print("reloaded")
             bot.sendMessage(id, "done")
         except:
-            os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
+            try:
+                os.system("mv handlefile.py.bak handlefile.py; rm handlefile.pyc")
+            except:
+                pass
             try:
                 reload(handlefile)
             except:
