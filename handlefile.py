@@ -11,7 +11,6 @@ def handle(msg, bot, reimport):
     except:
         botid = "@Deadc0deBot"
     botid = botid.lower()
-    banamount = 10
     #print("reloaded")
     #print(msg)
     #json.dump(msg, open("dump" + str(time.clock()) + ".txt", "w"))
