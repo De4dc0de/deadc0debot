@@ -51,7 +51,7 @@ def handle(msg, bot, reimport):
                     bot.sendMessage(id, "<====3")
             elif(command == "/binaer" or command == "/binaer" + botid):
                 try:
-                    bot.sendMessage(id, ' '.join(format(ord(x), 'b') for x in realtext.split(" ")[1]))
+                    bot.sendMessage(id, ' '.join(format(ord(x), 'b').zfill(8) for x in realtext.split(" ")[1]))
                 except:
                     pass
             elif(command == "/love" or command == "/love" + botid):
