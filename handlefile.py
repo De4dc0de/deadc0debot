@@ -49,6 +49,11 @@ def handle(msg, bot, reimport):
                     bot.sendMessage(id, "<" + "=" * limit(int(realtext.split(" ")[1]), 500) + "3")
                 except:
                     bot.sendMessage(id, "<====3")
+            elif(command == "/binaer" or command == "/binaer" + botid):
+                try:
+                    bot.sendMessage(id, ' '.join(format(ord(x), 'b') for x in realtext.split(" ")[1]))
+                except:
+                    pass
             elif(command == "/love" or command == "/love" + botid):
                 bot.sendMessage(id, "<3")
             elif(command == "/web" or command == "/web" + botid):
