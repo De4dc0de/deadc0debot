@@ -89,6 +89,12 @@ def handle(msg, bot, reimport):
         try:
             if("xD" in msg["text"] or "XD" in msg["text"] or "xd" in msg["text"] or "Xd" in msg["text"]):
                 bot.sendMessage(id, u'\U0001f606')
+            if("youtube." in msg["text"]):
+                youtubelinks = msg["text"].split("youtube.", 1)[1:]
+                hooktubelinks = []
+                for i in youtubelinks:
+                    hooktubelinks.append("hooktube.com/" + i.split("/", 1)[1].rsplit("/", 1)[0])
+                bot.sendMessage(id, "\n".join(hooktubelinks))
             if(msg["text"].replace(" ", "").replace("0", "").replace("1", "").replace("\n", "") == ""):
                 if(len(msg["text"]) > 7 and "0" in msg["text"] or "1" in msg["text"]):
                     binaer = int("0b" + msg["text"].replace(" ", "").replace("\n", ""), 2)
